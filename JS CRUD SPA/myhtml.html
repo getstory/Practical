@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container-fluid">
+
+        <h1>My First Bootstrap Page</h1>
+        <p>This part is inside a .container-fluid class.</p>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Paul’s Training Company</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <table id="productTable"
+                       class="table table-bordered
+                 table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Introduction Date</th>
+                            <th>URL</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <button type="button" id="addButton"
+                        class="btn btn-primary"
+                        onclick="addClick();">
+                    Add Product
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Product Information
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="productname">Product Name</label>
+                            <input type="text" id="productname"
+                                   class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="introdate">
+                                Introduction Date
+                            </label>
+                            <input type="date" id="introdate"
+                                   class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="url">URL</label>
+                            <input type="url" id="url"
+                                   class="form-control" />
+                        </div>
+
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="button" id="updateButton"
+                                        class="btn btn-primary"
+                                        onclick="updateClick();">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <br />
+            <div class="col-sm-6">
+                <button>Send an HTTP GET </button>
+
+                <button>Send an HTTP Post </button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.get("demo_test.asp", function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+            });
+        });
+</script>
+
+<script>
+
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.post("demo_test_post.asp",
+                    {
+                        name: "Donald Duck",
+                        city: "Duckburg"
+                    },
+                    function (data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            });
+        });
+</script>
+
+</html>
